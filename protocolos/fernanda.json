@@ -1,0 +1,163 @@
+{
+  "protocolos": [
+    {
+      "id": "protocolo-exemplo",
+      "nome": "Protocolo exemplo (substitua)",
+      "inicio": "2026-11-01",
+      "fim": "2026-11-30",
+      "objetivo": "Exemplo para testar o app",
+      "nivel": "Avançado",
+      "orientacoes": "Protocolo de exemplo. Quando o seu protocolo real chegar, este pode ser excluído. Aquecer 10 min antes de cada treino.",
+      "treinos": [
+        {
+          "id": "seg",
+          "dia": "Segunda",
+          "grupos": "Femoral - Ombro",
+          "exercicios": [
+            {
+              "nome": "Banco sóleo panturrilha",
+              "aparelho": "Banco sóleo",
+              "series": "4 x 15",
+              "carga": "",
+              "observacao": "Carga alta e amplitude completa.",
+              "intervalo": 80
+            },
+            {
+              "nome": "Mesa flexora",
+              "aparelho": "Mesa flexora",
+              "series": "4 x 15-12-10-6",
+              "carga": "",
+              "observacao": "Progressão de carga a cada série.",
+              "intervalo": 90
+            },
+            {
+              "nome": "Flexora vertical",
+              "aparelho": "Flexora vertical",
+              "series": "3 x 12 a 10",
+              "carga": "",
+              "observacao": "Foco em intensidade e ativação.",
+              "intervalo": 80
+            },
+            {
+              "nome": "Stiff com barra livre",
+              "aparelho": "Barra livre",
+              "series": "4 x 12 a 10",
+              "carga": "",
+              "observacao": "Ativação e alongamento, descida lenta.",
+              "intervalo": 90
+            },
+            {
+              "nome": "Elevação lateral",
+              "aparelho": "Halteres",
+              "series": "4 x 12",
+              "carga": "8 kg",
+              "observacao": "",
+              "intervalo": 60
+            }
+          ]
+        },
+        {
+          "id": "ter",
+          "dia": "Terça",
+          "grupos": "Peitoral - Tríceps - Abs",
+          "exercicios": [
+            {
+              "nome": "Supino reto",
+              "aparelho": "Banco reto",
+              "series": "4 x 10-8",
+              "carga": "30 kg",
+              "observacao": "Descer a barra até o peito, controlando.",
+              "intervalo": 90
+            },
+            {
+              "nome": "Crucifixo inclinado",
+              "aparelho": "Halteres",
+              "series": "3 x 12",
+              "carga": "10 kg",
+              "observacao": "",
+              "intervalo": 60
+            },
+            {
+              "nome": "Tríceps na polia",
+              "aparelho": "Polia alta, corda",
+              "series": "3 x 12-15",
+              "carga": "20 kg",
+              "observacao": "",
+              "intervalo": 60
+            },
+            {
+              "nome": "Abdominal supra",
+              "aparelho": "Colchonete",
+              "series": "3 x 20",
+              "carga": "",
+              "observacao": "",
+              "intervalo": 45
+            }
+          ]
+        },
+        {
+          "id": "qua",
+          "dia": "Quarta",
+          "grupos": "Dorsal (remadas) + Antebraço",
+          "exercicios": [
+            {
+              "nome": "Remada baixa",
+              "aparelho": "Máquina sentado",
+              "series": "4 x 12-10",
+              "carga": "35 kg",
+              "observacao": "",
+              "intervalo": 60
+            },
+            {
+              "nome": "Remada curvada",
+              "aparelho": "Barra livre",
+              "series": "4 x 10",
+              "carga": "",
+              "observacao": "Tronco firme, puxar com os cotovelos.",
+              "intervalo": 90
+            },
+            {
+              "nome": "Rosca punho",
+              "aparelho": "Barra W",
+              "series": "3 x 15",
+              "carga": "",
+              "observacao": "",
+              "intervalo": 45
+            }
+          ]
+        },
+        {
+          "id": "qui",
+          "dia": "Quinta",
+          "grupos": "Quadríceps - Ombro",
+          "exercicios": [
+            {
+              "nome": "Leg press 45°",
+              "aparelho": "Leg press",
+              "series": "4 x 12-10",
+              "carga": "100 kg",
+              "observacao": "",
+              "intervalo": 90
+            },
+            {
+              "nome": "Cadeira extensora",
+              "aparelho": "Extensora",
+              "series": "3 x 15",
+              "carga": "30 kg",
+              "observacao": "Segurar 1 segundo no alto.",
+              "intervalo": 60
+            },
+            {
+              "nome": "Desenvolvimento",
+              "aparelho": "Halteres sentado",
+              "series": "3 x 10",
+              "carga": "10 kg",
+              "observacao": "",
+              "intervalo": 60
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
