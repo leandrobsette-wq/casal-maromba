@@ -70,6 +70,14 @@ h2.sec{font-family:var(--f-display);font-weight:600;font-size:15px;letter-spacin
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .act{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;font:inherit;color:var(--accent-ink);background:var(--accent);border:0;border-radius:14px;padding:14px;cursor:pointer;min-height:112px;min-width:0}
 .act.alt{background:var(--ink);color:var(--bg)}
+.foco{display:flex;flex-direction:column;gap:10px;background:var(--ink);color:var(--bg);border-radius:14px;padding:14px;min-height:112px;min-width:0}
+.foco .lb{font-family:var(--f-display);font-size:22px;font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.foco .lb svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.foco ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.foco li{font-size:13px;line-height:1.25;display:flex;gap:7px;align-items:baseline}
+.foco li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);transform:translateY(-1px)}
+.foco .ft{font-size:12px;opacity:.7;margin-top:auto}
+.resumo{margin:10px 0 0;font-size:14px;line-height:1.45}
 .act svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .act b{font-family:var(--f-display);font-size:22px;font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:.02em}
 .act small{font-size:12px;opacity:.85;line-height:1.3;display:block;margin-top:3px}
@@ -275,6 +283,7 @@ const ICON={
   up:'<svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>',
   body:'<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><path d="M6 9h12M12 9v6M9 21l3-6 3 6"/></svg>',
   timer:'<svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M10 2h4"/></svg>',
+  alvo:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>',
   yt:'<svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg>'
 };
 
@@ -393,6 +402,26 @@ function vDias(p){
       <button class="btn primary block" data-act="abrir" data-v="${esc(p.id)}|${esc(t.id)}">Ver treino</button>
     </article>`}).join("")}</div>`;
 }
+function semanaDe(p){
+  if(!p.inicio||!p.fim)return "";
+  const ini=parse(p.inicio),fim=parse(p.fim),t=parse(hoje()),dia=86400000;
+  const total=Math.max(1,Math.ceil((fim-ini+dia)/(7*dia))),atualS=Math.min(total,Math.max(1,Math.floor((t-ini)/(7*dia))+1));
+  if(t<ini)return "começa em "+br(p.inicio);if(t>fim)return "terminou em "+br(p.fim);
+  return "semana "+atualS+" de "+total;
+}
+function prioridades(p){
+  const f=p.foco||{};
+  if(Array.isArray(f.prioridades)&&f.prioridades.length)return f.prioridades.slice(0,3);
+  const m=/prioridade:\s*([^)]+)/i.exec(p.objetivo||"");
+  if(m)return m[1].split(/,| e (?=[^,]*$)/).map(x=>x.trim()).filter(Boolean).slice(0,3);
+  return p.objetivo?[p.objetivo]:[];
+}
+function vFoco(p){
+  const pr=prioridades(p),n=p.treinos.length,sem=semanaDe(p);
+  return `<section class="foco" aria-label="Foco do protocolo atual"><span class="lb">${ICON.alvo}Foco</span>
+    ${pr.length?`<ul>${pr.map(x=>`<li>${esc(x.charAt(0).toUpperCase()+x.slice(1))}</li>`).join("")}</ul>`:""}
+    <span class="ft">${n} ${n===1?"treino":"treinos"} por semana${sem?" · "+sem:""}</span></section>`;
+}
 function vInicio(){
   const p=atual(),ses=sessao(),nome=nomePerfil(S.perfil);
   let res="";
@@ -400,7 +429,7 @@ function vInicio(){
   const nx=p&&proximo(p);
   const acoes=`<section class="actions">
     <button class="act" data-act="${nx?"abrir":"tab"}" data-v="${nx?esc(p.id)+"|"+esc(nx.id):"protocolos"}">${ICON.dumb}<span><b>Treino do dia</b><small>${nx?esc(nx.dia)+" · "+esc(nx.grupos):"Nenhum protocolo ainda"}</small></span></button>
-    <button class="act alt" data-act="novo">${ICON.up}<span><b>Novo protocolo</b><small>Colar o protocolo que o Claude gerou</small></span></button>
+    ${p?vFoco(p):""}
   </section>`;
   if(!p)return `<p class="hello">${saudacao()}, ${esc(nome)}!</p>${vFrequencia()}${acoes}${dicaInstalar()}`;
   return `<p class="hello">${saudacao()}, ${esc(nome)}!</p>
@@ -408,6 +437,7 @@ function vInicio(){
   <h2 class="sec">Protocolo atual</h2>
   <section class="card">
     <div class="proto-head"><span class="proto-ic">${ICON.body}</span><div style="min-width:0"><h3>${esc(p.nome)}</h3><div class="meta">${brFull(p.inicio)}${p.fim?" – "+brFull(p.fim):""}</div><div class="meta">${[p.objetivo,p.nivel].filter(Boolean).map(esc).join(" | ")}</div></div></div>
+    ${p.foco&&p.foco.resumo?`<p class="resumo">${esc(p.foco.resumo)}</p>`:""}
     ${p.orientacoes?`<details class="ori"><summary>Orientações gerais</summary><p>${esc(p.orientacoes)}</p></details>`:""}
   </section>
   ${vDias(p)}`;
@@ -469,29 +499,18 @@ function vProtocolos(){
       <div class="row" style="justify-content:space-between"><span class="chip ${cls}">${lab}</span><span class="note">${n} treinos feitos</span></div>
       <h3>${esc(p.nome)}</h3><div class="meta">${brFull(p.inicio)}${p.fim?" – "+brFull(p.fim):""}${p.objetivo?" · "+esc(p.objetivo):""}</div>
       <div class="meta">${p.treinos.map(t=>esc(t.dia)).join(" · ")}</div>
-      <div class="row"><button class="btn sm" data-act="exp" data-v="${esc(p.id)}">${open?"Fechar":"Ver exercícios"}</button>
-      ${S.confirm===c?`<button class="btn sm danger" data-act="delp" data-v="${esc(p.id)}">Excluir</button><button class="btn sm" data-act="cancel">Manter</button>`:`<button class="btn sm ghost" data-act="ask" data-v="${esc(c)}">Excluir</button>`}</div>
-      ${S.confirm===c?`<p class="note">O histórico deste protocolo continua guardado.</p>`:""}
+      <div class="row"><button class="btn sm" data-act="exp" data-v="${esc(p.id)}">${open?"Fechar":"Ver exercícios"}</button></div>
       ${open?`<div class="pdetail">${p.treinos.map(t=>`<div><h4>${esc(t.dia)} · ${esc(t.grupos)}</h4><ol>${t.exercicios.map(e=>`<li><b>${esc(e.nome)}</b> — ${esc(e.series)}${e.intervalo?" · "+e.intervalo+"s":""}</li>`).join("")}</ol></div>`).join("")}</div>`:""}
     </article>`}).join("");
   return `<h2 class="sec">Protocolos de ${esc(nomePerfil(S.perfil))}</h2>
-  ${cards||`<div class="card empty"><h3>Nenhum protocolo ainda</h3><p>Cole abaixo o protocolo que o Claude gerou.</p></div>`}
-  <p class="note">O protocolo atual é sempre o último que subiu: assim que um protocolo novo chega, ele substitui o anterior.</p>
-  <h2 class="sec" id="novoSec">Novo protocolo</h2>
-  <section class="card stack">
-    <label for="importText">Cole o texto do protocolo que o Claude gerou</label>
-    <textarea id="importText" spellcheck="false" placeholder='{"nome":"Protocolo Leandro","inicio":"2026-11-21","treinos":[...]}'>${esc(S.importText)}</textarea>
-    <label for="importFile">ou escolha o arquivo .json</label>
-    <input type="file" id="importFile" accept=".json,application/json,text/plain">
-    ${S.importErr?`<div class="err">${esc(S.importErr)}</div>`:""}
-    <button class="btn primary block" data-act="importar">Salvar protocolo</button>
-  </section>
+  ${cards||`<div class="card empty"><h3>Nenhum protocolo ainda</h3><p>Assim que o Claude criar o seu primeiro protocolo, ele aparece aqui.</p></div>`}
+  <p class="note">Os protocolos são criados pelo Claude. O mais recente vira o atual sozinho; os anteriores ficam aqui com o histórico.</p>
   <h2 class="sec">Ajustes</h2>
   <section class="card stack">
     <button class="btn" data-act="atualizar">Buscar protocolos novos</button>
     <button class="btn" data-act="backup">Salvar cópia do histórico</button>
-    <label for="restoreFile">Restaurar cópia do histórico</label>
-    <input type="file" id="restoreFile" accept=".json,application/json">
+    <button class="btn" data-act="restaurar">Restaurar cópia do histórico</button>
+    <input type="file" id="restoreFile" accept=".json,application/json" hidden>
     <button class="btn ghost" data-act="trocarPerfil">Trocar de pessoa (agora: ${esc(nomePerfil(S.perfil))})</button>
     <p class="note">Os treinos feitos e as cargas ficam guardados neste celular. Salve uma cópia de vez em quando.</p>
   </section>`;
@@ -553,7 +572,6 @@ document.addEventListener("click",async ev=>{
   else if(a==="cancelPerfil"){S.trocandoPerfil=false;render();}
   else if(a==="trocarPerfil"){S.trocandoPerfil=true;render();window.scrollTo(0,0);}
   else if(a==="tab"){S.tab=v;S.view=null;render();}
-  else if(a==="novo"){S.tab="protocolos";S.view=null;render();const el=$("novoSec");if(el)el.scrollIntoView({behavior:"smooth"});}
   else if(a==="abrir"){const [pid,tid]=v.split("|");S.view={protocoloId:pid,treinoId:tid};S.confirm=null;S.editCarga=null;S.dataFim=null;
     const s=sessao();if(s&&s.protocoloId===pid&&s.treinoId===tid)telaLigada(true);render();window.scrollTo(0,0);}
   else if(a==="voltar"){S.view=null;S.editCarga=null;render();window.scrollTo(0,0);}
@@ -579,21 +597,16 @@ document.addEventListener("click",async ev=>{
   else if(a==="delc"){S.dados.checkins=S.dados.checkins.filter(c=>c.id!==v);S.confirm=null;salvar();render();toast("Registro apagado");}
   else if(a==="delp"){delete S.dados.protocolos[v];if(S.dados.ocultos.indexOf(v)<0)S.dados.ocultos.push(v);S.confirm=null;salvar();render();toast("Protocolo excluído");}
   else if(a==="exp"){S.exp=S.exp===v?null:v;render();}
-  else if(a==="importar"){let lista;
-    try{let o=JSON.parse(S.importText);if(Array.isArray(o))lista=o;else if(o&&(o.protocolos||o.fichas))lista=o.protocolos||o.fichas;else lista=[o];lista=lista.map(validar);}
-    catch(e){S.importErr=typeof e==="string"?e:"O texto não é um JSON válido. Confira se copiou tudo, da primeira { até a última }.";render();return;}
-    lista.forEach(p=>{S.dados.protocolos[p.id]=p;S.dados.ocultos=S.dados.ocultos.filter(x=>x!==p.id);});salvar();
-    S.importText="";S.importErr="";render();toast(lista.length===1?'Protocolo "'+lista[0].nome+'" salvo':lista.length+" protocolos salvos");}
   else if(a==="atualizar"){await buscarServidor();render();toast(S.online?"Protocolos atualizados":"Sem internet agora. Usando a última cópia.",!S.online);}
   else if(a==="backup"){await salvarArquivo("casal-maromba-"+S.perfil+"-"+hoje()+".json",JSON.stringify({app:"casal-maromba",versao:1,perfil:S.perfil,exportadoEm:new Date().toISOString(),dados:S.dados},null,2));}
+  else if(a==="restaurar"){const f=$("restoreFile");f&&f.click();}
   else if(a==="fecharDica"){LS.set("cm:dicaFechada",true);render();}
   else if(a==="instalar"&&S.podeInstalar){S.podeInstalar.prompt();S.podeInstalar=null;render();}
 });
 document.addEventListener("keydown",ev=>{if(ev.key==="Enter"&&ev.target.id==="cargaIn"){ev.preventDefault();const b=document.querySelector('[data-act="salvaCarga"]');b&&b.click();}});
-document.addEventListener("input",ev=>{if(ev.target.id==="importText")S.importText=ev.target.value;if(ev.target.id==="dataFim"&&ev.target.value)S.dataFim=ev.target.value;});
+document.addEventListener("input",ev=>{if(ev.target.id==="dataFim"&&ev.target.value)S.dataFim=ev.target.value;});
 document.addEventListener("change",ev=>{
   const t=ev.target;
-  if(t.id==="importFile"&&t.files[0]){const r=new FileReader();r.onload=()=>{S.importText=String(r.result||"");S.importErr="";render();};r.readAsText(t.files[0]);}
   if(t.id==="restoreFile"&&t.files[0]){const r=new FileReader();r.onload=()=>{
     try{const d=JSON.parse(String(r.result||"")).dados;if(!d||!Array.isArray(d.checkins))throw 0;
       const ids=new Set(S.dados.checkins.map(c=>c.id));let n=0;d.checkins.forEach(c=>{if(c&&c.id&&c.data&&!ids.has(c.id)){S.dados.checkins.push(c);n++;}});

@@ -11,6 +11,9 @@ https://leandrobsette-wq.github.io/casal-maromba/
 4. Faça commit e push na branch `main`. O app busca os protocolos ao abrir.
 
 Formato de cada protocolo: ver o documento do projeto `claude/formato-ficha-app.md` ou um protocolo existente.
+Todo protocolo novo leva o campo `foco`, mostrado no card "Foco" da tela inicial:
+`"foco": {"prioridades": ["até 3 itens curtos, ~20 caracteres cada"], "resumo": "1 a 2 frases curtas sobre como o protocolo distribui a prioridade na semana"}`
+O app não tem mais importação: protocolos entram só pelo repositório.
 Campos do exercício: nome, aparelho, series ("4 x 15-12-10-6"), carga, observacao, intervalo (segundos), video (opcional).
 
 ## Mudanças no app

@@ -1,5 +1,5 @@
 // Casal Maromba — service worker: guarda o app para funcionar sem internet na academia.
-const VERSAO = "casal-maromba-v2";
+const VERSAO = "casal-maromba-v3";
 const ARQUIVOS = [
   "./", "./index.html", "./manifest.webmanifest", "./perfis.json",
   "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-512.png",
