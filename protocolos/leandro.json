@@ -552,6 +552,373 @@
         }
       ],
       "publicado": "2026-11-10T08:00:00-03:00"
+    },
+    {
+      "id": "protocolo-leandro-2026-11-10",
+      "nome": "Protocolo Leandro",
+      "inicio": "2026-11-10",
+      "fim": "2026-12-14",
+      "publicado": "2026-11-10T08:06:00-03:00",
+      "objetivo": "Redução de gordura e hipertrofia (prioridade: perna e glúteo, tríceps e ombro)",
+      "nivel": "Avançado",
+      "orientacoes": "Aquecer 5–10 min. Cardio só depois da musculação ou em outro horário. Terminar as séries com 1–3 repetições na reserva; nos compostos livres parar 1–2 antes da falha; falha só na última série de máquinas e isoladores. Descida em 2–3 s. Dupla progressão: completou o topo da faixa de repetições em todas as séries, sobe a carga. Ao fim do protocolo, 1 semana mais leve antes do próximo.",
+      "treinos": [
+        {
+          "id": "seg",
+          "dia": "Segunda",
+          "grupos": "Quadríceps - Glúteo - Abs",
+          "orientacoes": "",
+          "exercicios": [
+            {
+              "nome": "Agachamento livre com barra",
+              "aparelho": "Barra olímpica no rack",
+              "series": "3 x 6-10",
+              "carga": "",
+              "observacao": "Descer fundo com coluna neutra, descida em 2-3s. Parar 1-2 repetições antes da falha.",
+              "intervalo": 180,
+              "video": ""
+            },
+            {
+              "nome": "Leg press articulado",
+              "aparelho": "Leg press articulado (anilhas)",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Amplitude completa sem tirar o quadril do banco. 1-2 repetições na reserva.",
+              "intervalo": 150,
+              "video": ""
+            },
+            {
+              "nome": "Agachamento búlgaro com halteres",
+              "aparelho": "Halteres + banco",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Cada perna. Tronco levemente inclinado para alongar o glúteo, pausa de 1s embaixo.",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Cadeira extensora",
+              "aparelho": "Cadeira extensora articulada",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Descida em 2-3s. Última série até a falha + parciais na parte alongada (joelho dobrado).",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Cadeira flexora",
+              "aparelho": "Cadeira flexora (pino, Matrix)",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Tronco levemente inclinado à frente para alongar o posterior. Descida controlada.",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Panturrilha no leg press",
+              "aparelho": "Leg press articulado (anilhas)",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Pausa de 2s embaixo, no alongamento. Amplitude completa.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Prancha",
+              "aparelho": "Colchonete",
+              "series": "3 x 45s",
+              "carga": "",
+              "observacao": "Estabilização: abdômen e glúteos contraídos, quadril alinhado.",
+              "intervalo": 45,
+              "video": ""
+            }
+          ]
+        },
+        {
+          "id": "ter",
+          "dia": "Terça",
+          "grupos": "Ombro - Tríceps - Peitoral - Abs",
+          "orientacoes": "",
+          "exercicios": [
+            {
+              "nome": "Desenvolvimento com halteres sentado",
+              "aparelho": "Halteres + banco regulável",
+              "series": "3 x 6-10",
+              "carga": "",
+              "observacao": "Descer até a linha da orelha, descida em 2-3s. 1-2 repetições na reserva.",
+              "intervalo": 150,
+              "video": ""
+            },
+            {
+              "nome": "Supino inclinado com halteres",
+              "aparelho": "Halteres + banco regulável",
+              "series": "3 x 6-10",
+              "carga": "",
+              "observacao": "Alongar bem o peito embaixo, descida em 2-3s.",
+              "intervalo": 150,
+              "video": ""
+            },
+            {
+              "nome": "Elevação lateral unilateral na polia",
+              "aparelho": "Polia baixa com alça",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Cada braço. Cabo passando por trás do corpo para carregar o ombro alongado. Subir até a linha do ombro.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Tríceps francês na polia com corda",
+              "aparelho": "Polia com corda",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "De costas para a polia, braços acima da cabeça: alongar bem o tríceps (cabeça longa).",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Tríceps paralela sentado",
+              "aparelho": "Seated Dip (anilhas)",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Cotovelos junto ao corpo, descida controlada. Última série até a falha.",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Crucifixo no crossover",
+              "aparelho": "Estação de polias",
+              "series": "2 x 10-15",
+              "carga": "",
+              "observacao": "Abrir bem até alongar o peito, cotovelos levemente flexionados.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Elevação de pernas no banco",
+              "aparelho": "Banco reto",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Abdômen infra: subir as pernas sem tirar a lombar do banco, descida lenta.",
+              "intervalo": 60,
+              "video": ""
+            }
+          ]
+        },
+        {
+          "id": "qua",
+          "dia": "Quarta",
+          "grupos": "Dorsal - Bíceps - Posterior de ombro - Trapézio - Abs",
+          "orientacoes": "",
+          "exercicios": [
+            {
+              "nome": "Puxada alta articulada",
+              "aparelho": "Puxada alta articulada (anilhas)",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Alongar bem em cima, puxar com os cotovelos. 1-2 repetições na reserva.",
+              "intervalo": 120,
+              "video": ""
+            },
+            {
+              "nome": "Remada articulada com apoio no peito",
+              "aparelho": "Remada sentado articulada (anilhas)",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Deixar as escápulas abrirem na volta e juntar no final.",
+              "intervalo": 120,
+              "video": ""
+            },
+            {
+              "nome": "Remada sentada com triângulo",
+              "aparelho": "Remada sentada (pino, Matrix)",
+              "series": "2 x 10-12",
+              "carga": "",
+              "observacao": "Tronco firme, sem balanço. Alongar na volta.",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Crucifixo inverso no voador",
+              "aparelho": "Voador peitoral / crucifixo inverso",
+              "series": "3 x 12-15",
+              "carga": "",
+              "observacao": "Posterior de ombro: braços quase estendidos, pausa de 1s. Última série até a falha.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Rosca inclinada com halteres",
+              "aparelho": "Halteres + banco regulável inclinado",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Braços pendurados atrás do corpo para alongar o bíceps. Descida em 2-3s.",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Rosca martelo com halteres",
+              "aparelho": "Halteres",
+              "series": "2 x 10-12",
+              "carga": "",
+              "observacao": "Antebraço e bíceps: pegada neutra, sem balanço.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Encolhimento com halteres",
+              "aparelho": "Halteres",
+              "series": "2 x 10-15",
+              "carga": "",
+              "observacao": "Trapézio: subir os ombros em direção às orelhas, pausa de 1s.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Abdominal no banco declinado",
+              "aparelho": "Banco abdominal declinado",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Abdômen reto: enrolar a coluna, sem puxar o pescoço.",
+              "intervalo": 60,
+              "video": ""
+            }
+          ]
+        },
+        {
+          "id": "qui",
+          "dia": "Quinta",
+          "grupos": "Posterior de coxa - Glúteo - Quadríceps - Abs",
+          "orientacoes": "",
+          "exercicios": [
+            {
+              "nome": "Stiff com barra",
+              "aparelho": "Barra olímpica",
+              "series": "3 x 6-10",
+              "carga": "",
+              "observacao": "Descida em 2-3s alongando o posterior, coluna neutra. Parar 1-2 repetições antes da falha.",
+              "intervalo": 150,
+              "video": ""
+            },
+            {
+              "nome": "Hip thrust com barra no banco",
+              "aparelho": "Barra olímpica + banco reto",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Pausa de 1s no topo, contraindo o glúteo.",
+              "intervalo": 120,
+              "video": ""
+            },
+            {
+              "nome": "Hack squat inclinado",
+              "aparelho": "Hack squat inclinado (Matrix)",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Descer fundo, descida em 2-3s.",
+              "intervalo": 120,
+              "video": ""
+            },
+            {
+              "nome": "Cadeira flexora",
+              "aparelho": "Cadeira flexora (pino, Matrix)",
+              "series": "4 x 10-15",
+              "carga": "",
+              "observacao": "Tronco inclinado à frente. Última série até a falha + parciais na parte alongada.",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Panturrilha em pé unilateral com halter",
+              "aparelho": "Halter + step/anilha",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Cada perna. Pausa de 2s embaixo, no alongamento.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Rotação na polia (woodchopper)",
+              "aparelho": "Estação de polias",
+              "series": "3 x 10-12",
+              "carga": "",
+              "observacao": "Oblíquos: cada lado, girar o tronco com os braços estendidos.",
+              "intervalo": 60,
+              "video": ""
+            }
+          ]
+        },
+        {
+          "id": "sex",
+          "dia": "Sexta",
+          "grupos": "Ombro - Tríceps - Peitoral - Abs",
+          "orientacoes": "",
+          "exercicios": [
+            {
+              "nome": "Desenvolvimento militar com barra em pé",
+              "aparelho": "Barra olímpica",
+              "series": "3 x 6-10",
+              "carga": "",
+              "observacao": "Abdômen e glúteos firmes, sem arquear a lombar. 1-2 repetições na reserva.",
+              "intervalo": 150,
+              "video": ""
+            },
+            {
+              "nome": "Supino reto com barra",
+              "aparelho": "Barra olímpica + banco reto",
+              "series": "3 x 6-10",
+              "carga": "",
+              "observacao": "Descer a barra até o peito, descida em 2-3s. 1-2 repetições na reserva.",
+              "intervalo": 150,
+              "video": ""
+            },
+            {
+              "nome": "Elevação lateral com halteres",
+              "aparelho": "Halteres",
+              "series": "4 x 12-20",
+              "carga": "",
+              "observacao": "Subir até a linha do ombro, sem balanço. Última série até a falha + parciais.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Face pull na polia com corda",
+              "aparelho": "Polia alta com corda",
+              "series": "2 x 12-15",
+              "carga": "",
+              "observacao": "Puxar a corda em direção ao rosto, abrindo os cotovelos.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Tríceps testa com barra",
+              "aparelho": "Barra W/fixa + banco reto",
+              "series": "3 x 8-12",
+              "carga": "",
+              "observacao": "Descer a barra atrás da cabeça para alongar o tríceps. Cotovelos fixos.",
+              "intervalo": 90,
+              "video": ""
+            },
+            {
+              "nome": "Tríceps corda na polia",
+              "aparelho": "Polia alta com corda",
+              "series": "2 x 10-15",
+              "carga": "",
+              "observacao": "Drop-set na última série. Abrir a corda no final.",
+              "intervalo": 60,
+              "video": ""
+            },
+            {
+              "nome": "Abdominal na polia (crunch ajoelhado)",
+              "aparelho": "Polia alta com corda",
+              "series": "3 x 10-15",
+              "carga": "",
+              "observacao": "Abdômen reto com carga: enrolar o tronco, quadril parado.",
+              "intervalo": 60,
+              "video": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
