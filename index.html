@@ -332,12 +332,15 @@ function validar(o){
 /* ---------- regras ---------- */
 function protocolos(){
   const m={};
-  S.servidor.forEach(p=>{if(p&&p.id)m[p.id]=Object.assign({origem:"nuvem"},p);});
+  S.servidor.forEach((p,i)=>{if(p&&p.id)m[p.id]=Object.assign({origem:"nuvem",_ord:i},p);});
   Object.values(S.dados.protocolos).forEach(p=>{const s=m[p.id];if(!s||(p.atualizadoEm||"")>(s.atualizadoEm||""))m[p.id]=Object.assign({origem:"celular"},p);});
   return Object.values(m).filter(p=>S.dados.ocultos.indexOf(p.id)<0);
 }
-function atual(){const t=hoje(),ps=protocolos().sort((a,b)=>(b.inicio||"").localeCompare(a.inicio||""));return ps.find(p=>(p.inicio||"")<=t)||ps[ps.length-1]||null;}
-function statusP(p){const a=atual();if(a&&a.id===p.id)return["Atual","on"];if((p.inicio||"")>hoje())return["Próximo","ok"];return["Encerrado",""];}
+/* o protocolo atual é sempre o último que subiu (publicado no repositório ou colado no celular) */
+function selo(p){return p.publicado||p.atualizadoEm||"";}
+function porRecente(a,b){return selo(b).localeCompare(selo(a))||((b._ord||0)-(a._ord||0));}
+function atual(){return protocolos().sort(porRecente)[0]||null;}
+function statusP(p){const a=atual();if(a&&a.id===p.id)return["Atual","on"];return["Anterior",""];}
 const checks=()=>S.dados.checkins;
 const execDe=(pid,tid)=>checks().filter(c=>c.protocoloId===pid&&c.treinoId===tid).sort((a,b)=>(b.data+b.criadoEm).localeCompare(a.data+a.criadoEm));
 function proximo(p){
@@ -460,7 +463,7 @@ function vHist(){
   ${bloco}<h2 class="sec">Treinos realizados</h2><section class="card log">${log}</section>`;
 }
 function vProtocolos(){
-  const ps=protocolos().sort((a,b)=>(b.inicio||"").localeCompare(a.inicio||""));
+  const ps=protocolos().sort(porRecente);
   const cards=ps.map(p=>{const [lab,cls]=statusP(p),open=S.exp===p.id,c="p:"+p.id,n=checks().filter(x=>x.protocoloId===p.id).length;
     return `<article class="card pcard">
       <div class="row" style="justify-content:space-between"><span class="chip ${cls}">${lab}</span><span class="note">${n} treinos feitos</span></div>
@@ -473,7 +476,7 @@ function vProtocolos(){
     </article>`}).join("");
   return `<h2 class="sec">Protocolos de ${esc(nomePerfil(S.perfil))}</h2>
   ${cards||`<div class="card empty"><h3>Nenhum protocolo ainda</h3><p>Cole abaixo o protocolo que o Claude gerou.</p></div>`}
-  <p class="note">O protocolo atual é o de início mais recente que já começou. Um protocolo com início futuro entra sozinho na data marcada.</p>
+  <p class="note">O protocolo atual é sempre o último que subiu: assim que um protocolo novo chega, ele substitui o anterior.</p>
   <h2 class="sec" id="novoSec">Novo protocolo</h2>
   <section class="card stack">
     <label for="importText">Cole o texto do protocolo que o Claude gerou</label>

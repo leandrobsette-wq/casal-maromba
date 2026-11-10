@@ -5,7 +5,8 @@ https://leandrobsette-wq.github.io/casal-maromba/
 
 ## Subir um protocolo novo
 1. Edite `protocolos/leandro.json` ou `protocolos/fernanda.json` (formato `{"protocolos":[...]}`).
-2. Adicione o protocolo novo à lista, com `id` novo e `inicio` correto; mantenha os anteriores (o histórico do app depende do `id`).
+2. Adicione o protocolo novo ao FIM da lista, com `id` novo, `inicio` = data em que sobe e `publicado` = data e hora do envio (ISO, ex.: `2026-11-10T08:00:00-03:00`); mantenha os anteriores (o histórico do app depende do `id`).
+   O app usa sempre como atual o último protocolo que subiu (maior `publicado`; sem ele, o último da lista). Não existe mais "protocolo com início futuro": subiu, já substitui o anterior.
 3. Valide o JSON (`python3 -m json.tool arquivo`) antes do commit.
 4. Faça commit e push na branch `main`. O app busca os protocolos ao abrir.
 
