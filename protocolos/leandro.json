@@ -162,7 +162,7 @@
     {
       "id": "protocolo-leandro-2026-11-21",
       "nome": "Protocolo Leandro",
-      "inicio": "2026-11-21",
+      "inicio": "2026-11-10",
       "fim": "2026-12-26",
       "objetivo": "Redução de gordura e hipertrofia (prioridade: perna e glúteo, tríceps e ombro)",
       "nivel": "Avançado",
@@ -550,7 +550,8 @@
             }
           ]
         }
-      ]
+      ],
+      "publicado": "2026-11-10T08:00:00-03:00"
     }
   ]
 }
